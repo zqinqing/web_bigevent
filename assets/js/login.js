@@ -5,8 +5,10 @@ $(function() {
         $(this).attr('class') === 'link_reg' ? $('.reg-box').show() : $('.login-box').show();
     });
 
-    // 从layui中获取form对象
-    let form = layui.form;
+    // 从 layui 中获取 form 对象
+    var form = layui.form
+    var layer = layui.layer
+
     form.verify({
         username: function(value, item) { //value：表单的值、item：表单的DOM对象
             if (!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)) {
@@ -40,11 +42,48 @@ $(function() {
         repass: function(value, item) {
             // 通过形参拿到的时确认密码框的内容
             // 还需要拿到一次等于的判断
-            if (value !== $('input[name="password"]').val()) return '两次密码不一致!';
+            let pwd = $('#form-reg [name=password]').val();
+            if (value !== pwd) return '两次密码不一致!';
         }
     });
 
     // 监听注册表单的监听事件
+    $('#form-reg').on('submit', function(event) {
+        event.preventDefault(); // 阻止默认提交的行为
+        $.ajax({
+            method: 'POST',
+            url: '/api/reguser',
+            data: {
+                username: $('#form-reg [name=username]').val(),
+                password: $('#form-reg [name=password]').val()
+            },
+            success: function(result) {
+                if (result.status !== 0) return layer.msg(result.message);
+                layer.msg(result.message);
+                // 模拟人的点击行为
+                $('.link_login').click()
+            }
+        })
+    })
+
+    // 监听登录表单的监听事件
+    $('#form-login').on('submit', function(event) {
+        event.preventDefault(); // 阻止默认提交的行为
+        // console.log($(this).serialize());
+        $.ajax({
+            method: 'POST',
+            url: '/api/login',
+            data: $(this).serialize(), // 快速获取表单中的数据
+            success: function(result) {
+                if (result.status !== 0) return layer.msg(result.message);
+                layer.msg(result.message);
+                // 将登录成功得到的 token 字符串，保存到 localStorage 中
+                localStorage.setItem('token', result.token);
+                // 跳转到后台主页
+                location.href = '/index.html'
+            }
+        })
+    })
 
 })
 

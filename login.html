@@ -20,7 +20,7 @@
         <p class="title-box"></p>
         <!-- 登录模块 -->
         <div class="login-box">
-            <form class="layui-form" action="">
+            <form class="layui-form" action="" id="form-login">
                 <div class="layui-form-item">
                     <i class="layui-icon layui-icon-username"></i>
                     <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
@@ -41,7 +41,7 @@
         </div>
         <!-- 注册模块 -->
         <div class="reg-box">
-            <form class="layui-form" action="">
+            <form class="layui-form" action="" id="form-reg">
                 <div class="layui-form-item">
                     <i class="layui-icon layui-icon-username"></i>
                     <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
@@ -52,7 +52,7 @@
                 </div>
                 <div class="layui-form-item">
                     <i class="layui-icon layui-icon-password"></i>
-                    <input type="repassword" name="repassword" required lay-verify="required|pass|repass" placeholder="请再次输入密码" autocomplete="off" class="layui-input">
+                    <input type="password" name="repassword" required lay-verify="required|pass|repass" placeholder="请再次输入密码" autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-form-item">
                     <!-- layui 的表单提交按钮和普通按钮就是多了一个 lay-submit 属性 -->
@@ -70,7 +70,8 @@
 <script src="./assets/lib/layui/layui.all.js"></script>
 <!-- 导入jq -->
 <script src="./assets/lib/jquery.js"></script>
-
+<!-- 导入自己封装的 baseAPI -->
+<script src="./assets/js/baseAPI.js"></script>
 <script src="./assets/js/login.js"></script>
 
 </html>
