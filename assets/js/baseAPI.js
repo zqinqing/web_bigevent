@@ -16,7 +16,7 @@ $.ajaxPrefilter(function(options) {
     // // 无论成功或者失败，最终都会调用此 complete 函数
     options.complete = function(result) {
         // 在complete 回调函数中,可以使用result.responseJSON 拿到服务器响应回来的数据
-        console.log(result.responseJSON);
+        // console.log(result.responseJSON);
         if (result.responseJSON.status === 1 && result.responseJSON.message === '身份认证失败！') {
             // 1、强制清空token
             localStorage.removeItem('token');
