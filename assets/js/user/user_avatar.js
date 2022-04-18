@@ -22,7 +22,7 @@ $(function() {
         // console.log(this.files[0]);
         // console.log(event.target.files);
         let file = event.target.files[0];
-        if (file.length === 0) return layer.msg('请选择照片');
+        if (event.target.files.length === 0) return layer.msg('请选择照片');
         // 2、根据选择的文件，创建一个对应的 URL 地址：
         let newImgUrl = URL.createObjectURL(file);
         console.log(newImgUrl);

@@ -28,7 +28,7 @@ function getUserInfo() {
         // },
         success: function(result) {
             if (result.status !== 0) return layer.msg(result.message);
-            console.log(result);
+            // console.log(result);
             // 渲染用户的头像
             renderAvatar(result.data)
         },
