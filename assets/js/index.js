@@ -67,3 +67,8 @@ function renderAvatar(user) {
         $('.text-avatar').text(name[0].toUpperCase()).show();
     }
 }
+
+function highlight(kw) {
+    $('dd').removeClass('layui-this')
+    $(`dd:contains('${kw}')`).addClass('layui-this')
+}

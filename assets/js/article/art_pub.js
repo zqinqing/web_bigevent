@@ -96,7 +96,8 @@ $(function() {
                 if (result.status !== 0) return layer.msg(result.message);
                 console.log(result.message);
                 // 发布文章成功后，跳转到文章列表页面
-                location.href = '/article/art_list.html';
+                window.parent.highlight('文章列表')
+                location.href = '/article/art_list.html'
             }
         })
     }
