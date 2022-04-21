@@ -118,7 +118,7 @@ $(function() {
                 method: 'GET',
                 url: '/my/article/delete/' + $id,
                 success: function(result) {
-                    if (result.status !== 0) return layer.mes(result.message);
+                    if (result.status !== 0) return layer.msg(result.message);
                     layer.msg(result.message);
 
                     // 当数据删除完成后，需要判断当前这一页中,是否还有剩余的数据
